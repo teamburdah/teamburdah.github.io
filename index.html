@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Burdah Project — Autonomous OS Engineering from Scratch</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary-fixed-variant": "#004e5c", "tertiary": "#45dfa4", "on-error": "#690005", "inverse-surface": "#e0e2ea", "on-primary": "#003824", "primary-container": "#10b981", "surface-variant": "#31353b", "surface-container-low": "#181c21", "surface-container": "#1c2025", "on-background": "#e0e2ea", "on-tertiary": "#003825", "primary": "#4edea3", "on-secondary-fixed": "#001f26", "secondary": "#4cd7f6", "outline-variant": "#3c4a42", "surface-tint": "#4edea3", "secondary-fixed-dim": "#4cd7f6", "on-surface": "#e0e2ea", "on-tertiary-fixed": "#002114", "on-surface-variant": "#bbcabf", "error-container": "#93000a", "on-tertiary-fixed-variant": "#005137", "background": "#101419", "on-primary-fixed-variant": "#005236", "secondary-fixed": "#acedff", "error": "#ffb4ab", "outline": "#86948a", "on-secondary": "#003640", "surface-bright": "#36393f", "inverse-on-surface": "#2d3136", "on-primary-container": "#00422b", "on-primary-fixed": "#002113", "secondary-container": "#03b5d3", "inverse-primary": "#006c49", "on-error-container": "#ffdad6", "surface-dim": "#101419", "surface-container-highest": "#31353b", "tertiary-fixed-dim": "#45dfa4", "surface-container-high": "#262a30", "surface-container-lowest": "#0a0e14", "tertiary-fixed": "#68fcbf", "primary-fixed": "#6ffbbe", "surface": "#101419", "tertiary-container": "#00b982", "on-secondary-container": "#00424e", "primary-fixed-dim": "#4edea3", "on-tertiary-container": "#00422c" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-2xs": "0.125rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-md": "1rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "space-2xl": "4rem", "space-3xl": "6rem", "margin": "1.5rem", "margin-md": "2.5rem", "margin-lg": "4rem", "gutter-sm": "1rem", "gutter": "1.5rem", "gutter-lg": "2rem" }, "fontFamily": { "headline-md": ["Geist", "sans-serif"], "code-block": ["JetBrains Mono", "monospace"], "display-hero-mobile": ["Geist", "sans-serif"], "body-lg": ["JetBrains Mono", "monospace"], "label-md": ["JetBrains Mono", "monospace"], "body-md": ["JetBrains Mono", "monospace"], "body-sm": ["JetBrains Mono", "monospace"], "display-hero": ["Geist", "sans-serif"], "label-sm": ["JetBrains Mono", "monospace"], "headline-sm": ["Geist", "sans-serif"], "headline-lg-mobile": ["Geist", "sans-serif"], "headline-lg": ["Geist", "sans-serif"] }, "fontSize": { "headline-md": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "500" }], "code-block": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "display-hero-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "600" }], "body-lg": ["15px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }], "body-md": ["13px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "display-hero": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "600" }], "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "500" }], "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.025em", "fontWeight": "600" }] } } } };</script></head>
+<body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/85 backdrop-blur-xl border-b border-outline-variant/40 shadow-[0_1px_8px_rgba(0,0,0,0.4)]">
+<div class="h-16 max-w-7xl mx-auto px-margin flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<img alt="Burdah Project Logo" class="h-8 w-auto object-contain" src="burdah_rawbold.png">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-semibold tracking-tight text-on-surface leading-none">BURDAH PROJECT</span></div></div>
+<nav class="hidden lg:flex items-center gap-space-lg" data-active-classes="text-primary font-semibold"><a aria-current="page" class="transition-colors uppercase tracking-wider text-primary font-semibold font-label-md text-label-md" data-path="overview" href="#overview">Overview</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors uppercase tracking-wider" data-path="releases" href="#releases">Downloads</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors uppercase tracking-wider" data-path="philosophy" href="#philosophy">Philosophy</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors uppercase tracking-wider" data-path="about" href="#about">About Us</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider font-semibold hover:bg-tertiary-fixed hover:text-on-tertiary-fixed transition-all shadow-[0_0_16px_-4px_rgba(78,222,163,0.35)]" href="https://github.com/teamburdah" rel="noreferrer" target="_blank">GitHub Repository</span></a></div></div></header><main class="w-full pt-16 bg-background flex-1"><div class="flex flex-col w-full">
+<!-- Top Subtle Ambient Light Field -->
+<div class="relative w-full overflow-hidden" id="overview">
+<div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[840px] h-[340px] bg-gradient-to-b from-primary/15 via-secondary/10 to-transparent blur-3xl pointer-events-none rounded-full opacity-60"></div>
+<!-- SEGMENT 1: OVERVIEW & ARCHITECTURE -->
+<section class="relative max-w-7xl mx-auto px-margin pt-space-2xl pb-space-2xl w-full">
+<div class="flex flex-col items-start gap-space-xl">
+<!-- Clean Strong Header (No caption/badge tags directly above) -->
+<div class="flex flex-col gap-space-sm max-w-4xl">
+<h1 class="font-display-hero text-display-hero text-on-surface tracking-tight">
+Burdah Project
+</h1>
+<p class="font-body-lg text-body-lg text-primary max-w-4xl leading-relaxed">
+Testing how capable AI is at synthesizing computer operating systems (execpt Burdah DOS).
+</p>
+</div>
+<!-- Three Distinct Version Cards Breakdown -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg w-full items-stretch pt-space-xs">
+<!-- Card 1: Version 0.x (Burdah DOS System) -->
+<div class="flex flex-col justify-between bg-surface-container rounded-xl p-space-lg border border-outline-variant/50 shadow-lg hover:border-primary/50 transition-all group">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs border-b border-outline-variant/30">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest font-semibold">Real Mode Subsystem</span>
+<span class="px-space-xs py-space-2xs rounded bg-surface-container-high text-outline font-label-sm text-label-sm">FreeDOS Fork</span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold group-hover:text-primary transition-colors">
+Version 0.x
+</h3>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wide">
+Burdah DOS System
+</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+A modified FreeDOS kernel enhanced with new features and experimentation while preserving genuine DOS authenticity.
+</p>
+<div class="p-space-sm rounded-lg bg-surface-container-low border border-outline-variant/30 flex flex-col gap-space-xs mt-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Hardware Profile</span>
+<div class="flex items-start gap-space-xs text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-primary text-[16px] shrink-0 mt-0.5">memory</span>
+<span>Recommended hardware: vintage computers starting from the <strong class="text-on-surface">i286 era</strong>.</span>
+</div>
+</div>
+</div>
+<div class="pt-space-md border-t border-outline-variant/30 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Architecture</span>
+<span class="font-code-block text-code-block text-on-surface">16-Bit Real Mode</span>
+</div>
+</div>
+<!-- Card 2: Version 1.x -->
+<div class="flex flex-col justify-between bg-surface-container rounded-xl p-space-lg border border-outline-variant/50 shadow-lg hover:border-secondary/50 transition-all group">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs border-b border-outline-variant/30">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-semibold">Protected Mode Subsystem</span>
+<span class="px-space-xs py-space-2xs rounded bg-surface-container-high text-secondary font-label-sm text-label-sm">Primary Focus</span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold group-hover:text-secondary transition-colors">
+Version 1.x
+</h3>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wide">
+GUI-Oriented Evolution
+</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+A GUI-oriented evolution derived from 0.x, built reminiscent of Windows 9x aesthetics and mechanics.
+</p>
+<div class="p-space-sm rounded-lg bg-surface-container-low border border-outline-variant/30 flex flex-col gap-space-xs mt-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Hardware Profile</span>
+<div class="flex items-start gap-space-xs text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-secondary text-[16px] shrink-0 mt-0.5">desktop_windows</span>
+<span>Recommended minimum hardware: <strong class="text-on-surface">i486 architecture</strong> (primary focus architecture).</span>
+</div>
+</div>
+</div>
+<div class="pt-space-md border-t border-outline-variant/30 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Architecture</span>
+<span class="font-code-block text-code-block text-secondary">32-Bit Protected Mode</span>
+</div>
+</div>
+<!-- Card 3: Version 2 -->
+<div class="flex flex-col justify-between bg-surface-container rounded-xl p-space-lg border border-outline-variant/50 shadow-lg hover:border-tertiary/50 transition-all group relative overflow-hidden bg-gradient-to-b from-surface-container to-surface-container-low">
+<div class="absolute -top-12 -right-12 w-28 h-28 bg-primary/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex flex-col gap-space-md relative z-10">
+<div class="flex items-center justify-between pb-space-xs border-b border-outline-variant/30">
+<span class="font-label-sm text-label-sm text-tertiary-fixed font-semibold uppercase tracking-widest">Bare-Metal Synthesis</span>
+<span class="px-space-xs py-space-2xs rounded bg-primary-container/20 text-primary font-label-sm text-label-sm">Pure Scratch</span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold group-hover:text-primary transition-colors flex items-center justify-between">
+<span>Version 2</span>
+<span class="material-symbols-outlined text-primary text-[22px]">bolt</span>
+</h3>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wide">
+64-Bit Modern OS
+</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+A 64-bit operating system engineered seriously from bare metal scratch. Relying solely on the GRUB Multiboot2 bootloader at inception, completely severed from Linux conventions and standard POSIX bloat.
+</p>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest border border-outline-variant/30 flex flex-col gap-space-xs mt-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Bootloader &amp; Scope</span>
+<div class="flex items-start gap-space-xs text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-primary text-[16px] shrink-0 mt-0.5">terminal</span>
+<span>GRUB Multiboot2 • Independent ring 0 kernel with zero standard libc dependencies.</span>
+</div>
+</div>
+</div>
+<div class="pt-space-md border-t border-outline-variant/30 flex items-center justify-between relative z-10">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Architecture</span>
+<span class="font-code-block text-code-block text-primary">64-Bit Long Mode (x86_64)</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- SEGMENTS 2 & 3: TWO-COLUMN SIDE-BY-SIDE GRID LAYOUT -->
+<section class="w-full bg-surface-container-lowest py-space-3xl border-t border-b border-outline-variant/40" id="releases">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-stretch">
+<!-- SEGMENT 2 (Left Column): Downloads & Artifacts -->
+<div class="lg:col-span-6 flex flex-col justify-between bg-surface-container/60 rounded-2xl p-space-xl border border-outline-variant/50 shadow-xl">
+<div class="flex flex-col gap-space-lg">
+<!-- Clean Strong Header -->
+<div class="flex flex-col gap-space-2xs">
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+Download Releases
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+Verified raw images, disk containers, and release targets ready for deployment and emulation.
+</p>
+</div>
+<!-- Download Artifacts List -->
+<div class="flex flex-col gap-space-md">
+<!-- Item 1: Burdah 0.5 -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/40 flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">save</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Burdah 0.5</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-xs py-space-2xs rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase">FAT12/FAT16</span>
+<span class="px-space-xs py-space-2xs rounded bg-primary-container/20 text-primary font-label-sm text-label-sm uppercase font-semibold">Active</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+Burdah DOS System — FreeDOS derivative for vintage PC configurations.
+</p>
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-xs font-code-block text-code-block text-outline text-xs">
+<span>artifact:</span>
+<span class="text-on-surface font-medium">burdahdos.img</span>
+<span>(1.44 MB)</span>
+</div>
+<a class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider font-semibold hover:bg-tertiary-fixed transition-all shadow-sm" download="burdahdos.img" href="https://github.com/teamburdah/Burdah-DOS-System/releases/tag/v0.5_2026">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Download Floppy/Raw Image</span>
+</a>
+</div>
+</div>
+<!-- Item 2: Burdah 1.2 [Under Construction] -->
+<div class="p-space-md rounded-xl bg-surface-container-low/70 border border-outline-variant/30 flex flex-col gap-space-sm opacity-90">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">hourglass_top</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Burdah 1.2</span>
+</div>
+<span class="px-space-sm py-space-2xs rounded bg-secondary-container/20 text-secondary font-label-sm text-label-sm uppercase tracking-wider font-semibold border border-secondary/30">
+[Under Construction]
+</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+Windows 9x aesthetic GUI architecture with custom protected-mode supervisor.
+</p>
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-xs font-code-block text-code-block text-outline text-xs">
+<span>target:</span>
+<span class="text-on-surface font-medium">i486 minimum</span>
+<span>• VGA 80x25 / GUI</span>
+</div>
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant font-label-md text-label-md uppercase tracking-wider font-medium cursor-not-allowed border border-outline-variant/40" disabled="">
+<span>🛠️ Under Construction</span>
+</button>
+</div>
+</div>
+<!-- Item 3: Burdah 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-primary/40 flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Burdah 2</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-xs py-space-2xs rounded bg-surface-container text-primary font-label-sm text-label-sm uppercase font-semibold">64-Bit Bare-Metal</span>
+<span class="px-space-xs py-space-2xs rounded bg-primary text-on-primary font-label-sm text-label-sm uppercase font-semibold">Multiboot2</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+Flagship 64-bit independent kernel with pure bare-metal supervisor runtime.
+</p>
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center gap-space-xs font-code-block text-code-block text-outline text-xs pb-space-2xs">
+<span>artifacts:</span>
+<span class="text-on-surface font-medium">burdah.img</span>
+<span>&amp;</span>
+<span class="text-on-surface font-medium">burdah.vhd</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<a class="flex-1 inline-flex items-center justify-center gap-space-xs px-space-md py-space-xs rounded-lg bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider font-semibold hover:bg-tertiary-fixed transition-all shadow-sm" href="https://github.com/teamburdah">
+<span class="material-symbols-outlined text-[16px]">disc_full</span>
+<span>🛠️ Under Construction</span>
+</a>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SEGMENT 3 (Right Column): Philosophy & Identity -->
+<div class="lg:col-span-6 relative flex flex-col justify-between bg-surface-container/60 rounded-2xl p-space-xl border border-outline-variant/50 shadow-xl overflow-hidden" id="philosophy">
+<!-- Watermark / Background Geometric Star Motif (Star of al-Quds representation) -->
+<div class="absolute -right-16 -top-1 w-80 h-80 opacity-99 pointer-events-none select-none text-primary flex items-center justify-center">
+<svg class="w-full h-full" fill="currentColor" viewbox="0 0 100 100">
+<img src="burdah_rawbold.png">
+</svg>
+</div>
+<div class="flex flex-col gap-space-lg relative z-10">
+<!-- Clean Strong Header -->
+<div class="flex flex-col gap-space-2xs">
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+Burdah: The Philosophy Behind the OS
+</h2>
+</div>
+<!-- Translated Philosophical Narrative -->
+<div class="font-body-md text-body-md text-on-surface-variant leading-relaxed flex flex-col gap-space-md">
+<p class="text-on-surface">
+Burdah is the operating system that forms the core of our grand engineering endeavor. How we chose this name traces back to the founder's acquaintance with the monumental poetic work <em class="text-secondary font-semibold not-italic">"Qasidat al-Burdah"</em> by Imam Al-Busiri.
+</p>
+<p>
+Indeed, the founder harbored a profound affinity for this poem. Beyond Version 0.x—which remains an overhaul of FreeDOS—elements of Islamic tradition and Sufism are woven into the very soul of this operating system.
+</p>
+<p>
+Its emblem is drawn from the Star of al-Quds, deliberately crafted with intentional asymmetry; the unique identifier <code class="px-space-xs py-0.5 rounded bg-surface-container-high text-primary font-code-block font-semibold">bushiri</code> serves as the executable application binary signature; and core system utilities take their names from Islamic and spiritual terminology.
+</p>
+<p class="text-tertiary-fixed font-medium bg-surface-container-low p-space-md rounded-xl border border-primary/30">
+It reflects the founder's intention of <em>'tafa'ul'</em> (seeking auspicious blessings) through the venerable name of Burdah 🙂
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SEGMENT 4: ABOUT US -->
+<section class="max-w-7xl mx-auto px-margin py-space-3xl w-full" id="about">
+<div class="flex flex-col gap-space-xl">
+<!-- Clean Strong Header -->
+<div class="flex flex-col gap-space-2xs max-w-3xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+Get to Know Us
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+An experimental frontier where human direction meets raw, unconstrained machine synthesis.
+</p>
+</div>
+<!-- Translated Narrative Panels -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-stretch">
+<div class="lg:col-span-8 bg-surface-container rounded-2xl p-space-xl border border-outline-variant/50 shadow-xl flex flex-col gap-space-md">
+<div class="font-body-md text-body-md text-on-surface-variant leading-relaxed flex flex-col gap-space-md">
+<p class="text-on-surface text-base">
+Burdah Project is an experimental initiative pushing AI models (using free tiers) to modify and synthesize PC operating systems across computing eras.
+</p>
+<p>
+Throughout this journey, we evaluate various AI models trained and prompted as the primary architects of OS development. And us? We act merely as overseers and foreman—directing the overarching philosophy, vision, and architectural trajectory. We never let AI run aimlessly: we construct roadmaps, brainstorm with AI agents, define philosophy, guide design decisions, and stress-test the compiled builds.
+</p>
+<p>
+Specifically for Version 2 and future releases, we train AI in blind 'vibe coding' to engineer bare-metal software unconstrained by standard paradigms—without bowing to Linux, macOS, Haiku, or Windows conventions.
+</p>
+<p>
+The ultimate objective is understanding how far AI can build autonomous low-level software from scratch without treading trodden paths. We carve our own trail, and the AI strives to comprehend and manifest it.
+</p>
+<p class="text-tertiary-fixed font-medium">
+Whether this project ends up producing AI-generated digital debris or turns out to be an unexpected technological treasure remains an open question—the final judgment rests with the user.
+</p>
+<p class="text-outline text-sm border-t border-outline-variant/30 pt-space-sm">
+Note that we operate on free-tier AI services; we frequently run out of rate limits and tokens, waiting patiently for reset cycles. We continue to observe whether free community AI can genuinely rival high-end paid enterprise models.
+</p>
+</div>
+</div>
+<!-- Sidebar: Quick Highlights & Community Hubs -->
+<div class="lg:col-span-4 flex flex-col gap-space-md justify-between">
+<div class="p-space-lg rounded-2xl bg-surface-container-low border border-outline-variant/40 flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs text-primary font-headline-sm text-headline-sm font-semibold">
+<span class="material-symbols-outlined text-[22px]">smart_toy</span>
+<span>The Foreman Model</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+Human defines the soul, architecture, and verification rubric. AI executes the raw machine instructions, ring-0 ISR tables, and low-level C logic.
+</p>
+<!-- Direct Community Channels -->
+<div class="flex flex-col gap-space-xs">
+<a class="p-space-md rounded-xl bg-surface-container border border-outline-variant/40 hover:border-primary/50 transition-all flex items-center justify-between group" href="https://github.com/teamburdah" rel="noreferrer" target="_blank">
+<div class="flex items-center gap-space-sm">
+<span class="font-code-block text-headline-sm text-primary group-hover:scale-110 transition-transform">#</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold text-sm">GitHub Organization</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">@teamburdah</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[20px]">arrow_outward</span>
+</a>
+<a class="p-space-md rounded-xl bg-surface-container border border-outline-variant/40 hover:border-secondary/50 transition-all flex items-center justify-between group" href="https://instagram.com/teamburdah" rel="noreferrer" target="_blank">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[22px] group-hover:scale-110 transition-transform">photo_camera</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold text-sm">Instagram Updates</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">@teamburdah</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors text-[20px]">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-lowest py-space-xl border-t border-outline-variant/40 shadow-[0_-1px_12px_rgba(0,0,0,0.5)]"><div class="max-w-7xl mx-auto px-margin flex flex-col md:flex-row items-center justify-between gap-space-lg"><div class="flex flex-col items-center md:items-start gap-space-2xs"><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Burdah Project</span><span class="px-space-xs py-space-2xs rounded bg-surface-container-high text-primary font-label-sm text-label-sm uppercase tracking-wider">Experimental OS Initiative</span></div><p class="font-body-sm text-body-sm text-on-surface-variant text-center md:text-left">© 2026-2028 Burdah Project. Bare-Metal Operating System Engineering &amp; AI Vibe Coding Synthesis.</p></div><div class="flex items-center gap-space-lg"><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors tracking-wide flex items-center gap-space-xs" href="https://github.com/teamburdah" rel="noreferrer" target="_blank"><span class="font-code-block text-code-block text-outline">@</span><span>teamburdah</span></a><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors tracking-wide flex items-center gap-space-xs" href="https://instagram.com/teamburdah" rel="noreferrer" target="_blank"><span class="font-code-block text-code-block text-outline">@</span><span>teamburdah</span></a></div></div></footer></body></html>
